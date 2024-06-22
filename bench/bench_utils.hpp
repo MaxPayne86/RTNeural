@@ -5,12 +5,12 @@
 
 #if RTNEURAL_USE_XSIMD
 #include <xsimd/xsimd.hpp>
-using vec_type = std::vector<double, xsimd::aligned_allocator<double>>;
+using vec_type = std::vector<float, xsimd::aligned_allocator<float>>;
 #elif RTNEURAL_USE_EIGEN
 #include <Eigen/Dense>
-using vec_type = std::vector<double, Eigen::aligned_allocator<double>>;
+using vec_type = std::vector<float, Eigen::aligned_allocator<float>>;
 #else
-using vec_type = std::vector<double>;
+using vec_type = std::vector<float>;
 #endif
 
 std::vector<vec_type> generate_signal(size_t n_samples,

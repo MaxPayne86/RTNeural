@@ -45,16 +45,16 @@ int main(int argc, char* argv[])
         return 1;
 
     // generate audio
-    constexpr double sample_rate = 48000.0;
+    constexpr float sample_rate = 48000.0;
     const auto n_samples = static_cast<size_t>(sample_rate * length_seconds);
     const auto signal = generate_signal(n_samples, in_size);
-    std::vector<double> output(out_size);
+    std::vector<float> output(out_size);
 
     // run benchmark
     using clock_t = std::chrono::high_resolution_clock;
-    using second_t = std::chrono::duration<double>;
+    using second_t = std::chrono::duration<float>;
 
-    double nonTemplatedDur = 0.0;
+    float nonTemplatedDur = 0.0;
     {
         auto start = clock_t::now();
         for(size_t i = 0; i < n_samples; ++i)
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 
 #if MODELT_AVAILABLE
     std::cout << "Testing templated implementation..." << std::endl;
-    double templatedDur = 0.0;
+    float templatedDur = 0.0;
     {
         templatedDur = runTemplatedBench(signal, n_samples, layer_type, in_size, out_size);
         std::cout << "Processed " << length_seconds << " seconds of signal in "

@@ -3,8 +3,8 @@ include_directories(../RTNeural)
 # set optimization flags
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -mcpu=cortex-a8 -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon -ftree-vectorize -ffast-math -fprefetch-loop-arrays -funroll-loops -funsafe-loop-optimizations -fno-finite-math-only")
 set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "-Wl,-Ofast -Wl,--as-needed -Wl,--strip-debug")
-message("RTNeural bench CMAKE_CXX_FLAGS_RELEASE in ${CMAKE_PROJECT_NAME} = ${CMAKE_CXX_FLAGS_RELEASE}")
-message("RTNeural bench CMAKE_SHARED_LINKER_FLAGS_RELEASE in ${CMAKE_PROJECT_NAME} = ${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
+message("CMAKE_CXX_FLAGS_RELEASE in ${CMAKE_CURRENT_SOURCE_DIR} = ${CMAKE_CXX_FLAGS_RELEASE}")
+message("CMAKE_SHARED_LINKER_FLAGS_RELEASE in ${CMAKE_CURRENT_SOURCE_DIR} = ${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
 
 add_executable(rtneural_layer_bench layer_bench.cpp)
 target_link_libraries(rtneural_layer_bench LINK_PUBLIC RTNeural)
